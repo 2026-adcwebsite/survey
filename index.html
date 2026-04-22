@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0a0a0a">
-<title>ADC — Sa po humb pa website?</title>
+<title>Webora — Sa po humb pa website?</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -892,14 +892,14 @@
 <!-- SCREEN 1: INTRO -->
 <div class="screen active" id="screen-intro">
   <div class="topbar">
-    <div class="logo">ADC<span>.</span></div>
+    <div class="logo">webora<span>.</span></div>
     <div class="status">
       <span class="pulse"></span>
       <span id="liveTime">--:--</span>
     </div>
   </div>
 
-  <div class="eyebrow">— ADC Agency · Tiranë</div>
+  <div class="eyebrow">— Webora Agency · Tiranë</div>
   <h1>Sa klientë po humb <em>çdo muaj?</em></h1>
   <p class="intro-sub">Llogarite për 60 sekonda sa para po humbet biznesi yt pa një website profesional. Pa detyrim.</p>
 
@@ -954,13 +954,13 @@
         <div class="method-block">
           <div class="method-block-title">
             <span class="dot-icon"></span>
-            Kosto e kohës në telefon
+            Kosto e kohës për pyetje
           </div>
           <p class="method-block-desc">
-            Çdo orë e shpenzuar duke përsëritur orare, menu, çmime apo vendndodhje në telefon ka një kosto reale operacionale. E llogarisim me 4€/orë — tarifë mesatare e personelit në Shqipëri.
+            Çdo pyetje klienti (orare, menu, çmime, vendndodhje, disponueshmëri) merr mesatarisht 5 minuta kohë të stafit. Me një website profesional, 80% e këtyre pyetjeve u përgjigjet vetë. E llogarisim me 4€/orë — tarifë mesatare e personelit në Shqipëri.
           </p>
           <div class="method-formula">
-            Orë/javë × 4 javë × 4€/orë
+            Pyetje/javë × 4 javë × 5 min × 4€/orë
           </div>
         </div>
 
@@ -1010,7 +1010,7 @@
             HubSpot B2B Research — bizneset me website marrin 2.8× më shumë kontakte
           </div>
           <div class="method-source">
-            Tendencat e tregut shqiptar — vëzhgime të ADC Agency nga 47+ projekte (2023–2026)
+            Tendencat e tregut shqiptar — vëzhgime të Webora Agency nga 47+ projekte (2023–2026)
           </div>
         </div>
 
@@ -1067,7 +1067,7 @@
 
   <div class="input-block">
     <div class="input-head">
-      <span class="input-label">Vlera mesatare e fatures per klient (€)</span>
+      <span class="input-label">Vlera mesatare (€)</span>
       <span class="input-value-badge" id="ticketVal">45</span>
     </div>
     <input type="range" id="ticket" min="5" max="500" value="45" step="5">
@@ -1075,10 +1075,10 @@
 
   <div class="input-block">
     <div class="input-head">
-      <span class="input-label">Pyetje nga kliente ne dite</span>
+      <span class="input-label">Pyetje klientësh në javë</span>
       <span class="input-value-badge" id="hoursVal">8</span>
     </div>
-    <input type="range" id="hours" min="0" max="40" value="8" step="1">
+    <input type="range" id="hours" min="0" max="100" value="8" step="1">
   </div>
 
   <div class="chips-section">
@@ -1101,7 +1101,7 @@
       <span class="bd-val">–<span id="lostCustomers">45</span>/muaj</span>
     </div>
     <div class="bd-item">
-      <span class="bd-label">Kohë e humbur në telefon</span>
+      <span class="bd-label">Kohë e humbur për pyetje</span>
       <span class="bd-val">€<span id="timeCost">320</span></span>
     </div>
     <div class="bd-item">
@@ -1243,7 +1243,7 @@
 <!-- SCREEN 4: SUCCESS -->
 <div class="screen" id="screen-success">
   <div class="topbar">
-    <div class="logo">ADC<span>.</span></div>
+    <div class="logo">webora<span>.</span></div>
     <div class="status">
       <span class="pulse"></span>
       <span>KONFIRMUAR</span>
@@ -1262,7 +1262,7 @@
       </div>
       <div class="sc-row">
         <div class="sc-icon">✉</div>
-        <span>hello@adc.al</span>
+        <span>hello@webora.al</span>
       </div>
       <div class="sc-row">
         <div class="sc-icon">💬</div>
@@ -1348,7 +1348,7 @@
     hoursVal.textContent = h;
 
     var lost = Math.round(c * 0.30 * industryMult);
-    var tCost = Math.round(h * 4 * 4);
+    var tCost = Math.round(h * 4 * (5/60) * 4);
     var cCost = Math.round(c * 0.15 * t * 0.4 * industryMult);
     var monthly = Math.round(lost * t * 0.25 + tCost + cCost);
     var yearly = monthly * 12;
