@@ -137,7 +137,7 @@
     padding: 20px;
     background: var(--paper);
     border-radius: 12px;
-    margin-bottom: 28px;
+    margin-bottom: 20px;
   }
 
   .qs-item { text-align: center; }
@@ -159,6 +159,183 @@
     opacity: 0.6;
     line-height: 1.3;
   }
+
+  /* ═══════════════════════════════════════════════════════════ */
+  /* METHODOLOGY — Shpjegim i llogaritjeve                       */
+  /* ═══════════════════════════════════════════════════════════ */
+  .methodology {
+    background: var(--paper);
+    border-radius: 14px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    border: 1px solid var(--rule);
+  }
+
+  .method-toggle {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 16px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-family: 'Fraunces', serif;
+    font-size: 15px;
+    color: var(--ink);
+    text-align: left;
+    transition: background 0.2s;
+  }
+
+  .method-toggle:active {
+    background: rgba(10,10,10,0.03);
+  }
+
+  .method-toggle-text {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+  }
+
+  .method-icon {
+    width: 32px;
+    height: 32px;
+    background: var(--ink);
+    color: var(--cream);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  .method-arrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    opacity: 0.5;
+    transition: transform 0.3s;
+  }
+
+  .methodology.open .method-arrow {
+    transform: rotate(180deg);
+  }
+
+  .method-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .methodology.open .method-content {
+    max-height: 2000px;
+  }
+
+  .method-inner {
+    padding: 0 18px 18px;
+    border-top: 1px solid rgba(10,10,10,0.08);
+    padding-top: 16px;
+  }
+
+  .method-intro {
+    font-size: 14px;
+    line-height: 1.6;
+    opacity: 0.8;
+    margin-bottom: 18px;
+  }
+
+  .method-block {
+    background: var(--cream);
+    border-radius: 10px;
+    padding: 14px;
+    margin-bottom: 10px;
+  }
+
+  .method-block-title {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .method-block-title .dot-icon {
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+
+  .method-block-desc {
+    font-size: 13px;
+    line-height: 1.5;
+    opacity: 0.75;
+    margin-bottom: 8px;
+  }
+
+  .method-formula {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    background: var(--ink);
+    color: var(--cream);
+    padding: 8px 10px;
+    border-radius: 6px;
+    letter-spacing: 0.02em;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .method-formula::-webkit-scrollbar { display: none; }
+
+  .method-sources {
+    background: var(--cream);
+    border-radius: 10px;
+    padding: 14px;
+    margin-top: 14px;
+  }
+
+  .method-sources-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.6;
+    margin-bottom: 10px;
+  }
+
+  .method-source {
+    font-size: 12px;
+    line-height: 1.5;
+    opacity: 0.75;
+    padding: 6px 0;
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .method-source::before {
+    content: '→';
+    color: var(--accent);
+    flex-shrink: 0;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .method-disclaimer {
+    margin-top: 14px;
+    padding: 12px;
+    background: rgba(255, 87, 34, 0.08);
+    border-left: 3px solid var(--accent);
+    border-radius: 4px;
+    font-size: 12px;
+    line-height: 1.5;
+    opacity: 0.85;
+    font-style: italic;
+  }
+
+  /* ═══════════════════════════════════════════════════════════ */
 
   .btn {
     width: 100%;
@@ -426,6 +603,37 @@
     color: #c23e1a;
   }
 
+  /* Info button on calc screen */
+  .info-tip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    background: rgba(255, 87, 34, 0.08);
+    border-left: 3px solid var(--accent);
+    border-radius: 4px;
+    font-size: 12px;
+    line-height: 1.5;
+    margin-bottom: 16px;
+    cursor: pointer;
+  }
+
+  .info-tip-icon {
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  .info-tip-text {
+    flex: 1;
+    opacity: 0.85;
+  }
+
+  .info-tip-arrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    opacity: 0.5;
+  }
+
   .progress-dots {
     display: flex;
     gap: 6px;
@@ -562,7 +770,6 @@
 
   .form-input::placeholder { color: rgba(10,10,10,0.4); }
 
-  /* Loading spinner */
   .spinner {
     display: inline-block;
     width: 16px;
@@ -579,7 +786,6 @@
     to { transform: rotate(360deg); }
   }
 
-  /* Error state */
   .error-msg {
     background: #fee;
     color: #c23e1a;
@@ -712,6 +918,109 @@
     </div>
   </div>
 
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- METHODOLOGY — Shpjegim i të dhënave                         -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <div class="methodology" id="methodology">
+    <button class="method-toggle" onclick="toggleMethodology()">
+      <span class="method-toggle-text">
+        <span class="method-icon">📊</span>
+        <span>Si i llogarisim këto shifra?</span>
+      </span>
+      <span class="method-arrow">↓</span>
+    </button>
+
+    <div class="method-content">
+      <div class="method-inner">
+        <p class="method-intro">
+          Llogaritjet tona bazohen në studime të njohura ndërkombëtare për sjelljen e konsumatorit online dhe përshtaten me realitetin e tregut shqiptar. Ja si funksionon çdo komponent:
+        </p>
+
+        <!-- Block 1 -->
+        <div class="method-block">
+          <div class="method-block-title">
+            <span class="dot-icon"></span>
+            Klientë të humbur nga Google (30%)
+          </div>
+          <p class="method-block-desc">
+            97% e konsumatorëve kërkojnë biznese lokale online para se të vijnë fizikisht. Nëse biznesi yt nuk del në rezultate, humb mesatarisht 30% të klientëve potencialë që do të kishin zgjedhur ty.
+          </p>
+          <div class="method-formula">
+            Klientë × 30% × Faktor_Industrie
+          </div>
+        </div>
+
+        <!-- Block 2 -->
+        <div class="method-block">
+          <div class="method-block-title">
+            <span class="dot-icon"></span>
+            Kosto e kohës në telefon
+          </div>
+          <p class="method-block-desc">
+            Çdo orë e shpenzuar duke përsëritur orare, menu, çmime apo vendndodhje në telefon ka një kosto reale operacionale. E llogarisim me 10€/orë — tarifë mesatare e personelit në Shqipëri.
+          </p>
+          <div class="method-formula">
+            Orë/javë × 4 javë × 10€/orë
+          </div>
+        </div>
+
+        <!-- Block 3 -->
+        <div class="method-block">
+          <div class="method-block-title">
+            <span class="dot-icon"></span>
+            Humbje nga konkurrenca online
+          </div>
+          <p class="method-block-desc">
+            Konkurrentët që kanë website profesional kapin mesatarisht 15% të tregut tënd lokal. Kjo vlerë e humbur llogaritet duke shumëzuar këtë përqindje me vlerën e shitjes.
+          </p>
+          <div class="method-formula">
+            Klientë × 15% × Ticket × 40% × Faktor
+          </div>
+        </div>
+
+        <!-- Block 4: Industry factors -->
+        <div class="method-block">
+          <div class="method-block-title">
+            <span class="dot-icon"></span>
+            Faktorët sipas industrisë
+          </div>
+          <p class="method-block-desc">
+            Disa industri varen më shumë nga prezenca online. Faktorët tanë reflektojnë këtë realitet:
+          </p>
+          <div style="font-size: 12px; line-height: 1.7; opacity: 0.85; font-family: 'JetBrains Mono', monospace;">
+            🏨 Hotel / Bujtinë — <strong>×1.8</strong><br>
+            🏥 Klinikë / Shëndet — <strong>×1.5</strong><br>
+            🛍️ Dyqan / Retail — <strong>×1.4</strong><br>
+            🍽️ Restorant / Kafene — <strong>×1.3</strong><br>
+            ✨ Të tjera — <strong>×1.2</strong><br>
+            🔧 Shërbime teknike — <strong>×1.1</strong>
+          </div>
+        </div>
+
+        <!-- Sources -->
+        <div class="method-sources">
+          <div class="method-sources-title">Burimet e të dhënave</div>
+          <div class="method-source">
+            BrightLocal Consumer Review Survey 2024 — 97% e konsumatorëve kërkojnë biznese lokale në internet
+          </div>
+          <div class="method-source">
+            Google Consumer Insights — 76% vizitojnë një biznes brenda 24 orësh nga kërkimi online
+          </div>
+          <div class="method-source">
+            HubSpot B2B Research — bizneset me website marrin 2.8× më shumë kontakte
+          </div>
+          <div class="method-source">
+            Tendencat e tregut shqiptar — vëzhgime të Webora Agency nga 47+ projekte (2023–2026)
+          </div>
+        </div>
+
+        <div class="method-disclaimer">
+          <strong>Shënim:</strong> Këto shifra janë vlerësime bazuar në mesatarë të industrisë. Rezultatet reale mund të ndryshojnë në varësi të lokacionit, sezonit, cilësisë së website-it dhe strategjisë së marketingut. Ofrojmë një analizë të personalizuar falas për secilin klient.
+        </div>
+      </div>
+    </div>
+  </div>
+
   <button class="btn btn-primary" onclick="goScreen('calc')">
     FILLO LLOGARITJEN →
   </button>
@@ -730,6 +1039,13 @@
   <div class="step-badge">HAPI 01 — LLOGARITJE</div>
   <h2 class="section-title">Trego për biznesin tënd</h2>
   <p class="section-hint">Lëviz rrëshqitësit dhe shiko numrat live.</p>
+
+  <!-- Info tip directing back to methodology -->
+  <div class="info-tip" onclick="goScreen('intro'); setTimeout(function(){ openMethodology(); }, 300);">
+    <span class="info-tip-icon">ℹ️</span>
+    <span class="info-tip-text">Dëshiron të dish si i llogarisim këto shifra?</span>
+    <span class="info-tip-arrow">→</span>
+  </div>
 
   <div class="result-card">
     <div class="result-label">HUMBJE MUJORE E LLOGARITUR</div>
@@ -961,11 +1277,7 @@
 </div>
 
 <script>
-  // ═══════════════════════════════════════════════════════════
-  // KONFIGURIMI — ZËVENDËSO ME URL-NË TËNDE TË GOOGLE APPS SCRIPT
-  // ═══════════════════════════════════════════════════════════
   var GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx2jVF109BxAf5nFBVNk6XcZalRElPsvDBtgJ693VHum8bYC85K_MI2vtYghp_plyWF/exec';
-  // ═══════════════════════════════════════════════════════════
 
   function updateClock() {
     var n = new Date();
@@ -984,6 +1296,27 @@
     }
     document.getElementById('screen-' + name).classList.add('active');
     window.scrollTo(0, 0);
+  }
+
+  // Methodology toggle
+  function toggleMethodology() {
+    var el = document.getElementById('methodology');
+    el.classList.toggle('open');
+    if (el.classList.contains('open')) {
+      setTimeout(function() {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+    }
+  }
+
+  function openMethodology() {
+    var el = document.getElementById('methodology');
+    if (!el.classList.contains('open')) {
+      el.classList.add('open');
+    }
+    setTimeout(function() {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 200);
   }
 
   var customers = document.getElementById('customers');
@@ -1111,19 +1444,14 @@
     }
   }
 
-  // ═══════════════════════════════════════════════════════════
-  // SUBMIT FORM — Dërgon tek Google Sheets
-  // ═══════════════════════════════════════════════════════════
   function submitForm() {
     var btn = document.getElementById('submitBtn');
     var errorEl = document.getElementById('errorMsg');
     errorEl.classList.remove('show');
 
-    // Show loading
     btn.disabled = true;
     btn.innerHTML = '<span class="spinner"></span>DUKE DERGUAR...';
 
-    // Prepare data
     formData.name = document.getElementById('name').value.trim();
     formData.phone = document.getElementById('phone').value.trim();
     formData.email = document.getElementById('email').value.trim();
@@ -1132,17 +1460,15 @@
     formData.industry = industryName;
     formData.source = 'lead-generator-v1';
 
-    // Send to Google Sheets
     fetch(GOOGLE_SCRIPT_URL, {
       method: 'POST',
-      mode: 'no-cors', // E rëndësishme për Google Apps Script
+      mode: 'no-cors',
       headers: {
         'Content-Type': 'text/plain;charset=utf-8'
       },
       body: JSON.stringify(formData)
     })
     .then(function() {
-      // Me 'no-cors' nuk mund të lexojmë response, por sheet-i merr të dhënat
       document.getElementById('successName').textContent = (formData.name.split(' ')[0]) || 'mik';
       document.getElementById('successLoss').textContent = formData.calculatedLoss;
       goScreen('success');
