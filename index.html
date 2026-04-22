@@ -852,6 +852,92 @@
     text-align: left;
   }
 
+  /* WhatsApp CTA */
+  .whatsapp-cta {
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 16px;
+    color: white;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.25);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .whatsapp-cta::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 140px;
+    height: 140px;
+    background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .wa-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+    text-align: left;
+    position: relative;
+  }
+
+  .wa-icon-big {
+    width: 48px;
+    height: 48px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: white;
+    backdrop-filter: blur(10px);
+  }
+
+  .wa-header-text {
+    flex: 1;
+  }
+
+  .wa-title {
+    font-size: 17px;
+    font-weight: 500;
+    font-style: italic;
+    line-height: 1.2;
+    margin-bottom: 2px;
+  }
+
+  .wa-sub {
+    font-size: 13px;
+    opacity: 0.9;
+  }
+
+  .btn-whatsapp {
+    width: 100%;
+    padding: 14px 20px;
+    border: none;
+    background: white;
+    color: #128C7E;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.15s;
+    position: relative;
+  }
+
+  .btn-whatsapp:active {
+    transform: scale(0.97);
+  }
+
   .sc-row {
     display: flex;
     align-items: center;
@@ -1067,7 +1153,7 @@
 
   <div class="input-block">
     <div class="input-head">
-      <span class="input-label">Fatura mesatare per klient (€)</span>
+      <span class="input-label">Vlera mesatare e faturës për klient (€)</span>
       <span class="input-value-badge" id="ticketVal">45</span>
     </div>
     <input type="range" id="ticket" min="5" max="500" value="45" step="5">
@@ -1075,7 +1161,7 @@
 
   <div class="input-block">
     <div class="input-head">
-      <span class="input-label">Pyetje klientësh në javë</span>
+      <span class="input-label">Pyetje që marr mesatarisht nga klientët në një javë</span>
       <span class="input-value-badge" id="hoursVal">8</span>
     </div>
     <input type="range" id="hours" min="0" max="100" value="8" step="1">
@@ -1101,7 +1187,7 @@
       <span class="bd-val">–<span id="lostCustomers">45</span>/muaj</span>
     </div>
     <div class="bd-item">
-      <span class="bd-label">Kohë e humbur për pyetje</span>
+      <span class="bd-label">Kohë e humbur nga pyetjet e klientëve</span>
       <span class="bd-val">€<span id="timeCost">320</span></span>
     </div>
     <div class="bd-item">
@@ -1133,7 +1219,7 @@
 
   <div class="form-step active" data-step="1">
     <div class="q-number">PYETJE 01 / 04</div>
-    <h3 class="question">Cili është qëllimi kryesor i biznesit tuaj?</h3>
+    <h3 class="question">Cili është qëllimi kryesor?</h3>
     <p class="q-hint">Zgjidh atë që i përshtatet më shumë.</p>
 
     <div class="options-stack">
@@ -1164,7 +1250,7 @@
 
   <div class="form-step" data-step="2">
     <div class="q-number">PYETJE 02 / 04</div>
-    <h3 class="question">Kur do ta dëshiroje websitin e bisnesit?</h3>
+    <h3 class="question">Kur mendon ta keni një faqe per biznesin tuaj?</h3>
     <p class="q-hint">Planifikojmë sipas nevojës tënde.</p>
 
     <div class="options-stack">
@@ -1195,7 +1281,7 @@
 
   <div class="form-step" data-step="3">
     <div class="q-number">PYETJE 03 / 04</div>
-    <h3 class="question">Çfarë buxheti ke parasysh?</h3>
+    <h3 class="question">Çfarë buxheti keni parasysh për faqen tuaj?</h3>
     <p class="q-hint">Transparencë që në fillim.</p>
 
     <div class="options-stack">
@@ -1255,6 +1341,27 @@
     <h3 class="success-title">E morëm kërkesën tënde</h3>
     <p class="success-msg">Faleminderit <strong id="successName">mik</strong>! Do të kontaktojmë brenda <strong>24 orësh</strong> me një propozim të detajuar bazuar në humbjen mujore prej <strong id="successLoss">€2,340</strong>.</p>
 
+    <div class="whatsapp-cta">
+      <div class="wa-header">
+        <div class="wa-icon-big">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.304-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.464 3.488"/>
+          </svg>
+        </div>
+        <div class="wa-header-text">
+          <div class="wa-title">Dëshiron përgjigje tani?</div>
+          <div class="wa-sub">Na shkruaj direkt në WhatsApp</div>
+        </div>
+      </div>
+
+      <button class="btn btn-whatsapp" id="whatsappBtn" onclick="openWhatsApp()">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18" style="margin-right: 8px; vertical-align: middle;">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.304-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.464 3.488"/>
+        </svg>
+        HAP CHAT-IN NË WHATSAPP
+      </button>
+    </div>
+
     <div class="success-contact">
       <div class="sc-row">
         <div class="sc-icon">📱</div>
@@ -1263,10 +1370,6 @@
       <div class="sc-row">
         <div class="sc-icon">✉</div>
         <span>hello@adc.al</span>
-      </div>
-      <div class="sc-row">
-        <div class="sc-icon">💬</div>
-        <span>WhatsApp direkt</span>
       </div>
     </div>
 
@@ -1278,6 +1381,36 @@
 
 <script>
   var GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx2jVF109BxAf5nFBVNk6XcZalRElPsvDBtgJ693VHum8bYC85K_MI2vtYghp_plyWF/exec';
+
+  // ═══════════════════════════════════════════════════════════
+  // WHATSAPP — Zëvendëso me numrin tënd (pa +, pa hapësira)
+  // Shembull: 355691234567
+  // ═══════════════════════════════════════════════════════════
+  var WHATSAPP_NUMBER = '355697015966';
+  // ═══════════════════════════════════════════════════════════
+
+  function openWhatsApp() {
+    var name = (formData.name || '').split(' ')[0] || '';
+    var industry = formData.industry || '';
+    var goal = formData.goal || '';
+    var budget = formData.budget || '';
+    var timeline = formData.timeline || '';
+    var loss = formData.calculatedLoss || lossValue.textContent;
+
+    var msg = 'Përshëndetje ADC! 👋\n\n';
+    msg += 'Sapo plotësova kalkulatorin në faqen tuaj dhe dua një propozim.\n\n';
+    msg += '📊 *Të dhënat e mia:*\n';
+    if (name) msg += '• Emri: ' + name + '\n';
+    if (industry) msg += '• Biznesi: ' + industry + '\n';
+    if (goal) msg += '• Qëllimi: ' + goal + '\n';
+    if (timeline) msg += '• Afati: ' + timeline + '\n';
+    if (budget) msg += '• Buxheti: ' + budget + '\n';
+    msg += '• Humbja mujore e llogaritur: €' + loss + '\n\n';
+    msg += 'Prisni të flasim! 🚀';
+
+    var url = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(msg);
+    window.open(url, '_blank');
+  }
 
   function updateClock() {
     var n = new Date();
