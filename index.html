@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a0a0a">
+<title>Webora — Sa po humb pa website?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+  :root {
+    --ink: #0a0a0a;
+    --cream: #f4efe6;
+    --paper: #ebe4d6;
+    --accent: #ff5722;
+    --success: #22c55e;
+    --rule: rgba(10,10,10,0.12);
+  }
+
+  html { font-size: 16px; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Fraunces', Georgia, serif;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .screen {
+    display: none;
+    min-height: 100vh;
+    padding: 20px 20px 40px;
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  .screen.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 24px;
+  }
+
+  .logo {
+    font-weight: 900;
+    font-size: 20px;
+    font-style: italic;
+    letter-spacing: -0.03em;
+  }
+
+  .logo span { color: var(--accent); }
+
+  .status {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    opacity: 0.7;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .pulse {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--success);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.4); opacity: 0.5; }
+  }
+
+  .back-btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    background: none;
+    border: none;
+    padding: 4px 0;
+    cursor: pointer;
+    color: var(--ink);
+    opacity: 0.6;
+  }
+
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+    padding-top: 20px;
+  }
+
+  h1 {
+    font-size: 40px;
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    margin-bottom: 20px;
+  }
+
+  h1 em {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--accent);
+  }
+
+  .intro-sub {
+    font-size: 17px;
+    line-height: 1.5;
+    opacity: 0.75;
+    margin-bottom: 28px;
+  }
+
+  .quick-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    padding: 20px;
+    background: var(--paper);
+    border-radius: 12px;
+    margin-bottom: 28px;
+  }
+
+  .qs-item { text-align: center; }
+
+  .qs-num {
+    font-size: 22px;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .qs-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.6;
+    line-height: 1.3;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 16px 20px;
+    border: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform 0.15s, opacity 0.2s;
+    border-radius: 10px;
+    display: block;
+    text-align: center;
+  }
+
+  .btn:active { transform: scale(0.97); }
+
+  .btn-primary {
+    background: var(--ink);
+    color: var(--cream);
+  }
+
+  .btn-primary:disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--ink);
+    border: 1.5px solid var(--ink);
+  }
+
+  .btn-spacer { height: 12px; }
+
+  .step-badge {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    background: var(--ink);
+    color: var(--cream);
+    padding: 5px 10px;
+    border-radius: 4px;
+    margin-bottom: 14px;
+  }
+
+  .section-title {
+    font-size: 26px;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+
+  .section-hint {
+    font-size: 14px;
+    opacity: 0.65;
+    margin-bottom: 20px;
+  }
+
+  .result-card {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 22px 20px;
+    border-radius: 16px;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .result-card::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 180px;
+    height: 180px;
+    background: radial-gradient(circle, rgba(255,87,34,0.25) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .result-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.6;
+    margin-bottom: 6px;
+  }
+
+  .result-main {
+    font-size: 44px;
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    margin-bottom: 4px;
+  }
+
+  .result-main em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  .result-unit {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    opacity: 0.5;
+    text-transform: uppercase;
+  }
+
+  .result-delta {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(244,239,230,0.15);
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+  }
+
+  .result-delta .label { opacity: 0.6; }
+  .result-delta .val {
+    font-family: 'JetBrains Mono', monospace;
+    color: #ff7a5c;
+    font-weight: 700;
+  }
+
+  .input-block {
+    background: var(--paper);
+    padding: 18px;
+    border-radius: 14px;
+    margin-bottom: 12px;
+  }
+
+  .input-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+  }
+
+  .input-label {
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  .input-value-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--accent);
+    background: var(--cream);
+    padding: 4px 10px;
+    border-radius: 6px;
+  }
+
+  input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 6px;
+    background: rgba(10,10,10,0.1);
+    outline: none;
+    border-radius: 10px;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 28px;
+    height: 28px;
+    background: var(--ink);
+    border-radius: 50%;
+    cursor: pointer;
+    border: 3px solid var(--paper);
+  }
+
+  input[type="range"]::-moz-range-thumb {
+    width: 28px;
+    height: 28px;
+    background: var(--ink);
+    border-radius: 50%;
+    cursor: pointer;
+    border: 3px solid var(--paper);
+  }
+
+  .chips-section { margin-bottom: 16px; }
+
+  .chips-label {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    padding: 0 2px;
+  }
+
+  .chips-scroll {
+    margin: 0 -20px;
+    padding: 0 20px 4px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .chips-scroll::-webkit-scrollbar { display: none; }
+
+  .chips-row {
+    display: flex;
+    gap: 8px;
+    padding-bottom: 4px;
+  }
+
+  .chip {
+    flex-shrink: 0;
+    padding: 10px 14px;
+    background: var(--paper);
+    border: 2px solid transparent;
+    border-radius: 10px;
+    font-family: 'Fraunces', serif;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: transform 0.15s;
+  }
+
+  .chip:active { transform: scale(0.95); }
+
+  .chip.active {
+    background: var(--ink);
+    color: var(--cream);
+    border-color: var(--ink);
+  }
+
+  .breakdown {
+    background: var(--paper);
+    border-radius: 14px;
+    padding: 18px;
+    margin-bottom: 20px;
+  }
+
+  .bd-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(10,10,10,0.06);
+  }
+
+  .bd-item:last-child { border-bottom: none; }
+
+  .bd-label {
+    opacity: 0.7;
+    flex: 1;
+    padding-right: 10px;
+  }
+
+  .bd-val {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    color: #c23e1a;
+  }
+
+  .progress-dots {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 22px;
+  }
+
+  .dot {
+    flex: 1;
+    height: 4px;
+    background: var(--rule);
+    border-radius: 10px;
+    transition: background 0.3s;
+  }
+
+  .dot.active { background: var(--accent); }
+  .dot.done { background: var(--ink); }
+
+  .form-step { display: none; }
+
+  .form-step.active {
+    display: block;
+    animation: slideIn 0.3s ease-out;
+  }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(15px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  .q-number {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    opacity: 0.5;
+    margin-bottom: 10px;
+  }
+
+  .question {
+    font-size: 26px;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+
+  .q-hint {
+    font-size: 14px;
+    opacity: 0.65;
+    margin-bottom: 20px;
+  }
+
+  .options-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  .option {
+    width: 100%;
+    padding: 16px;
+    background: var(--paper);
+    border: 2px solid transparent;
+    border-radius: 12px;
+    cursor: pointer;
+    font-family: 'Fraunces', serif;
+    font-size: 16px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: transform 0.15s;
+    color: var(--ink);
+  }
+
+  .option:active { transform: scale(0.98); }
+
+  .option.selected {
+    background: var(--ink);
+    color: var(--cream);
+    border-color: var(--ink);
+  }
+
+  .option-emoji {
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+
+  .option-text { flex: 1; }
+
+  .option-check {
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(10,10,10,0.25);
+    border-radius: 50%;
+    flex-shrink: 0;
+    position: relative;
+    transition: all 0.2s;
+  }
+
+  .option.selected .option-check {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .option.selected .option-check::after {
+    content: '✓';
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--cream);
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 16px;
+    background: var(--paper);
+    border: 2px solid transparent;
+    border-radius: 12px;
+    font-family: 'Fraunces', serif;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.2s;
+    margin-bottom: 10px;
+    color: var(--ink);
+  }
+
+  .form-input:focus { border-color: var(--ink); }
+
+  .form-input::placeholder { color: rgba(10,10,10,0.4); }
+
+  /* Loading spinner */
+  .spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(244,239,230,0.3);
+    border-top-color: var(--cream);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    vertical-align: middle;
+    margin-right: 8px;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  /* Error state */
+  .error-msg {
+    background: #fee;
+    color: #c23e1a;
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-size: 13px;
+    margin-bottom: 12px;
+    display: none;
+  }
+
+  .error-msg.show { display: block; }
+
+  .success-wrap {
+    text-align: center;
+    padding: 40px 0 20px;
+  }
+
+  .success-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    margin: 0 auto 24px;
+    animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  @keyframes popIn {
+    0% { transform: scale(0); }
+    100% { transform: scale(1); }
+  }
+
+  .success-title {
+    font-size: 28px;
+    font-weight: 400;
+    font-style: italic;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+  }
+
+  .success-msg {
+    font-size: 15px;
+    line-height: 1.5;
+    opacity: 0.75;
+    margin: 0 auto 24px;
+    max-width: 320px;
+  }
+
+  .success-msg strong {
+    color: var(--accent);
+    font-weight: 500;
+    font-style: italic;
+  }
+
+  .success-contact {
+    background: var(--paper);
+    border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 16px;
+    text-align: left;
+  }
+
+  .sc-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+  }
+
+  .sc-row:not(:last-child) {
+    border-bottom: 1px solid rgba(10,10,10,0.08);
+  }
+
+  .sc-icon {
+    width: 32px;
+    height: 32px;
+    background: var(--ink);
+    color: var(--cream);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  @media (min-width: 600px) {
+    .screen {
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    h1 { font-size: 48px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- SCREEN 1: INTRO -->
+<div class="screen active" id="screen-intro">
+  <div class="topbar">
+    <div class="logo">webora<span>.</span></div>
+    <div class="status">
+      <span class="pulse"></span>
+      <span id="liveTime">--:--</span>
+    </div>
+  </div>
+
+  <div class="eyebrow">— Webora Agency · Tiranë</div>
+  <h1>Sa klientë po humb <em>çdo muaj?</em></h1>
+  <p class="intro-sub">Llogarite për 60 sekonda sa para po humbet biznesi yt pa një website profesional. Pa detyrim.</p>
+
+  <div class="quick-stats">
+    <div class="qs-item">
+      <div class="qs-num">47+</div>
+      <div class="qs-label">Website të<br>dorëzuara</div>
+    </div>
+    <div class="qs-item">
+      <div class="qs-num">24h</div>
+      <div class="qs-label">Përgjigje<br>mesatare</div>
+    </div>
+    <div class="qs-item">
+      <div class="qs-num">4.9</div>
+      <div class="qs-label">Vlerësim<br>klientësh</div>
+    </div>
+  </div>
+
+  <button class="btn btn-primary" onclick="goScreen('calc')">
+    FILLO LLOGARITJEN →
+  </button>
+</div>
+
+<!-- SCREEN 2: CALCULATOR -->
+<div class="screen" id="screen-calc">
+  <div class="topbar">
+    <button class="back-btn" onclick="goScreen('intro')">← MBRAPA</button>
+    <div class="status">
+      <span class="pulse"></span>
+      <span>LIVE</span>
+    </div>
+  </div>
+
+  <div class="step-badge">HAPI 01 — LLOGARITJE</div>
+  <h2 class="section-title">Trego për biznesin tënd</h2>
+  <p class="section-hint">Lëviz rrëshqitësit dhe shiko numrat live.</p>
+
+  <div class="result-card">
+    <div class="result-label">HUMBJE MUJORE E LLOGARITUR</div>
+    <div class="result-main"><em>€</em><span id="lossValue">2,340</span></div>
+    <div class="result-unit">/ muaj në të ardhura të humbura</div>
+    <div class="result-delta">
+      <span class="label">Në vit:</span>
+      <span class="val">€<span id="yearlyVal">28,080</span></span>
+    </div>
+  </div>
+
+  <div class="input-block">
+    <div class="input-head">
+      <span class="input-label">Klientë mujorë aktualë</span>
+      <span class="input-value-badge" id="customersVal">150</span>
+    </div>
+    <input type="range" id="customers" min="20" max="1000" value="150" step="10">
+  </div>
+
+  <div class="input-block">
+    <div class="input-head">
+      <span class="input-label">Vlera mesatare (€)</span>
+      <span class="input-value-badge" id="ticketVal">45</span>
+    </div>
+    <input type="range" id="ticket" min="5" max="500" value="45" step="5">
+  </div>
+
+  <div class="input-block">
+    <div class="input-head">
+      <span class="input-label">Orë/javë për pyetje</span>
+      <span class="input-value-badge" id="hoursVal">8</span>
+    </div>
+    <input type="range" id="hours" min="0" max="40" value="8" step="1">
+  </div>
+
+  <div class="chips-section">
+    <div class="chips-label">Lloji i biznesit</div>
+    <div class="chips-scroll">
+      <div class="chips-row">
+        <button class="chip active" data-mult="1.3" data-name="Restorant">🍽️ Restorant</button>
+        <button class="chip" data-mult="1.8" data-name="Hotel">🏨 Hotel</button>
+        <button class="chip" data-mult="1.5" data-name="Klinike">🏥 Klinikë</button>
+        <button class="chip" data-mult="1.4" data-name="Dyqan">🛍️ Dyqan</button>
+        <button class="chip" data-mult="1.1" data-name="Sherbime">🔧 Shërbime</button>
+        <button class="chip" data-mult="1.2" data-name="Tjeter">✨ Tjetër</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="breakdown">
+    <div class="bd-item">
+      <span class="bd-label">Klientë të humbur</span>
+      <span class="bd-val">–<span id="lostCustomers">45</span>/muaj</span>
+    </div>
+    <div class="bd-item">
+      <span class="bd-label">Kohë e humbur në telefon</span>
+      <span class="bd-val">€<span id="timeCost">320</span></span>
+    </div>
+    <div class="bd-item">
+      <span class="bd-label">Konkurrenca fiton pozicionin</span>
+      <span class="bd-val">€<span id="compCost">580</span></span>
+    </div>
+  </div>
+
+  <button class="btn btn-primary" onclick="goScreen('form')">
+    SHIKO ZGJIDHJEN →
+  </button>
+</div>
+
+<!-- SCREEN 3: FORM -->
+<div class="screen" id="screen-form">
+  <div class="topbar">
+    <button class="back-btn" id="formBack" onclick="formBackBtn()">← MBRAPA</button>
+    <div class="status">
+      <span id="stepCounter">1 / 4</span>
+    </div>
+  </div>
+
+  <div class="progress-dots">
+    <div class="dot active"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+  </div>
+
+  <div class="form-step active" data-step="1">
+    <div class="q-number">PYETJE 01 / 04</div>
+    <h3 class="question">Cili është qëllimi kryesor?</h3>
+    <p class="q-hint">Zgjidh atë që i përshtatet më shumë.</p>
+
+    <div class="options-stack">
+      <button class="option" data-field="goal" data-value="Rezervime online">
+        <span class="option-emoji">📅</span>
+        <span class="option-text">Pranoj rezervime online</span>
+        <span class="option-check"></span>
+      </button>
+      <button class="option" data-field="goal" data-value="Prezantim biznesi">
+        <span class="option-emoji">🎯</span>
+        <span class="option-text">Prezantoj biznesin tim</span>
+        <span class="option-check"></span>
+      </button>
+      <button class="option" data-field="goal" data-value="Shitje online">
+        <span class="option-emoji">🛒</span>
+        <span class="option-text">Shes produkte online</span>
+        <span class="option-check"></span>
+      </button>
+      <button class="option" data-field="goal" data-value="Me shume kontakte">
+        <span class="option-emoji">📞</span>
+        <span class="option-text">Marr më shumë kontakte</span>
+        <span class="option-check"></span>
+      </button>
+    </div>
+
+    <button class="btn btn-primary" disabled onclick="formNext()">VAZHDO →</button>
+  </div>
+
+  <div class="form-step" data-step="2">
+    <div class="q-number">PYETJE 02 / 04</div>
+    <h3 class="question">Kur e dëshiron gati?</h3>
+    <p class="q-hint">Planifikojmë sipas nevojës tënde.</p>
+
+    <div class="options-stack">
+      <button class="option" data-field="timeline" data-value="Urgjent (2 jave)">
+        <span class="option-emoji">⚡</span>
+        <span class="option-text">Sa më shpejt (2 javë)</span>
+        <span class="option-check"></span>
+      </button>
+      <button class="option" data-field="timeline" data-value="1 muaj">
+        <span class="option-emoji">🗓️</span>
+        <span class="option-text">Brenda 1 muaji</span>
+        <span class="option-check"></span>
+      </button>
+      <button class="option" data-field="timeline" data-value="2-3 muaj">
+        <span class="option-emoji">📆</span>
+        <span class="option-text">Brenda 2–3 muajve</span>
+        <span class="option-check"></span>
+      </button>
+      <button class="option" data-field="timeline" data-value="Eksplorim">
+        <span class="option-emoji">🔍</span>
+        <span class="option-text">Po shikoj opsionet</span>
+        <span class="option-check"></span>
+      </button>
+    </div>
+
+    <button class="btn btn-primary" disabled onclick="formNext()">VAZHDO →</button>
+  </div>
+
+  <div class="form-step" data-step="3">
+    <div class="q-number">PYETJE 03 / 04</div>
+    <h3 class="question">Ç'buxhet ke parasysh?</h3>
+    <p class="q-hint">Transparencë që në fillim.</p>
+
+    <div class="options-stack">
+      <button class="option" data-field="budget" data-value="€450-900 Bazik">
+        <span class="option-emoji">🌱</span>
+        <span class="option-text">€450 – €900 (bazik)</span>
+        <span class="option-check"></span>
+      </button>
+      <button class="option" data-field="budget" data-value="€900-2000 Standard">
+        <span class="option-emoji">🌿</span>
+        <span class="option-text">€900 – €2000 (standard)</span>
+        <span class="option-check"></span>
+      </button>
+      <button class="option" data-field="budget" data-value="€2000+ Premium">
+        <span class="option-emoji">🌳</span>
+        <span class="option-text">€2000+ (premium)</span>
+        <span class="option-check"></span>
+      </button>
+      <button class="option" data-field="budget" data-value="Kerkon sugjerim">
+        <span class="option-emoji">💡</span>
+        <span class="option-text">Më sugjeroni ju</span>
+        <span class="option-check"></span>
+      </button>
+    </div>
+
+    <button class="btn btn-primary" disabled onclick="formNext()">VAZHDO →</button>
+  </div>
+
+  <div class="form-step" data-step="4">
+    <div class="q-number">PYETJE 04 / 04 — E FUNDIT</div>
+    <h3 class="question">Ku të kontaktojmë?</h3>
+    <p class="q-hint">Përgjigje brenda 24 orësh. Pa spam.</p>
+
+    <div class="error-msg" id="errorMsg">Diçka nuk shkoi. Provo përsëri ose na shkruaj në WhatsApp.</div>
+
+    <input type="text" class="form-input" id="name" placeholder="Emri yt / Biznesi" autocomplete="name" />
+    <input type="tel" class="form-input" id="phone" placeholder="WhatsApp / Telefon" autocomplete="tel" inputmode="tel" />
+    <input type="email" class="form-input" id="email" placeholder="Email (opsionale)" autocomplete="email" inputmode="email" />
+
+    <div class="btn-spacer"></div>
+    <button class="btn btn-primary" id="submitBtn" disabled onclick="submitForm()">DËRGO KËRKESËN →</button>
+  </div>
+</div>
+
+<!-- SCREEN 4: SUCCESS -->
+<div class="screen" id="screen-success">
+  <div class="topbar">
+    <div class="logo">webora<span>.</span></div>
+    <div class="status">
+      <span class="pulse"></span>
+      <span>KONFIRMUAR</span>
+    </div>
+  </div>
+
+  <div class="success-wrap">
+    <div class="success-circle">✓</div>
+    <h3 class="success-title">E morëm kërkesën tënde</h3>
+    <p class="success-msg">Faleminderit <strong id="successName">mik</strong>! Do të kontaktojmë brenda <strong>24 orësh</strong> me një propozim të detajuar bazuar në humbjen mujore prej <strong id="successLoss">€2,340</strong>.</p>
+
+    <div class="success-contact">
+      <div class="sc-row">
+        <div class="sc-icon">📱</div>
+        <span>+355 XX XXX XXXX</span>
+      </div>
+      <div class="sc-row">
+        <div class="sc-icon">✉</div>
+        <span>hello@webora.al</span>
+      </div>
+      <div class="sc-row">
+        <div class="sc-icon">💬</div>
+        <span>WhatsApp direkt</span>
+      </div>
+    </div>
+
+    <button class="btn btn-outline" onclick="location.reload()">
+      LLOGARIT SËRISH
+    </button>
+  </div>
+</div>
+
+<script>
+  // ═══════════════════════════════════════════════════════════
+  // KONFIGURIMI — ZËVENDËSO ME URL-NË TËNDE TË GOOGLE APPS SCRIPT
+  // ═══════════════════════════════════════════════════════════
+  var GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/ZEVENDESO_ME_URL_TUAJ/exec';
+  // ═══════════════════════════════════════════════════════════
+
+  function updateClock() {
+    var n = new Date();
+    var h = String(n.getHours()).padStart(2, '0');
+    var m = String(n.getMinutes()).padStart(2, '0');
+    var el = document.getElementById('liveTime');
+    if (el) el.textContent = h + ':' + m;
+  }
+  updateClock();
+  setInterval(updateClock, 30000);
+
+  function goScreen(name) {
+    var screens = document.querySelectorAll('.screen');
+    for (var i = 0; i < screens.length; i++) {
+      screens[i].classList.remove('active');
+    }
+    document.getElementById('screen-' + name).classList.add('active');
+    window.scrollTo(0, 0);
+  }
+
+  var customers = document.getElementById('customers');
+  var ticket = document.getElementById('ticket');
+  var hours = document.getElementById('hours');
+  var industryMult = 1.3;
+  var industryName = 'Restorant';
+
+  var customersVal = document.getElementById('customersVal');
+  var ticketVal = document.getElementById('ticketVal');
+  var hoursVal = document.getElementById('hoursVal');
+  var lossValue = document.getElementById('lossValue');
+  var yearlyVal = document.getElementById('yearlyVal');
+  var lostCustomers = document.getElementById('lostCustomers');
+  var timeCost = document.getElementById('timeCost');
+  var compCost = document.getElementById('compCost');
+
+  function fmt(n) {
+    return Math.round(n).toLocaleString('de-DE');
+  }
+
+  function calculate() {
+    var c = parseInt(customers.value);
+    var t = parseInt(ticket.value);
+    var h = parseInt(hours.value);
+
+    customersVal.textContent = c;
+    ticketVal.textContent = t;
+    hoursVal.textContent = h;
+
+    var lost = Math.round(c * 0.30 * industryMult);
+    var tCost = Math.round(h * 4 * 10);
+    var cCost = Math.round(c * 0.15 * t * 0.4 * industryMult);
+    var monthly = Math.round(lost * t * 0.25 + tCost + cCost);
+    var yearly = monthly * 12;
+
+    lossValue.textContent = fmt(monthly);
+    yearlyVal.textContent = fmt(yearly);
+    lostCustomers.textContent = fmt(lost);
+    timeCost.textContent = fmt(tCost);
+    compCost.textContent = fmt(cCost);
+  }
+
+  customers.addEventListener('input', calculate);
+  ticket.addEventListener('input', calculate);
+  hours.addEventListener('input', calculate);
+
+  var chips = document.querySelectorAll('.chip');
+  for (var i = 0; i < chips.length; i++) {
+    chips[i].addEventListener('click', function() {
+      for (var j = 0; j < chips.length; j++) chips[j].classList.remove('active');
+      this.classList.add('active');
+      industryMult = parseFloat(this.dataset.mult);
+      industryName = this.dataset.name;
+      calculate();
+    });
+  }
+
+  calculate();
+
+  var currentStep = 1;
+  var totalSteps = 4;
+  var formData = {};
+
+  function updateFormStep() {
+    var steps = document.querySelectorAll('.form-step');
+    for (var i = 0; i < steps.length; i++) steps[i].classList.remove('active');
+    document.querySelector('.form-step[data-step="' + currentStep + '"]').classList.add('active');
+
+    var dots = document.querySelectorAll('.dot');
+    for (var i = 0; i < dots.length; i++) {
+      dots[i].classList.remove('active', 'done');
+      if (i + 1 < currentStep) dots[i].classList.add('done');
+      else if (i + 1 === currentStep) dots[i].classList.add('active');
+    }
+
+    document.getElementById('stepCounter').textContent = currentStep + ' / ' + totalSteps;
+    window.scrollTo(0, 0);
+    validateStep();
+  }
+
+  function validateStep() {
+    var stepEl = document.querySelector('.form-step[data-step="' + currentStep + '"]');
+    var btn = stepEl.querySelector('.btn-primary');
+
+    if (currentStep === 4) {
+      var name = document.getElementById('name').value.trim();
+      var phone = document.getElementById('phone').value.trim();
+      btn.disabled = !(name.length >= 2 && phone.length >= 6);
+    } else {
+      btn.disabled = !stepEl.querySelector('.option.selected');
+    }
+  }
+
+  var options = document.querySelectorAll('.option');
+  for (var i = 0; i < options.length; i++) {
+    options[i].addEventListener('click', function() {
+      var parent = this.closest('.form-step');
+      var parentOpts = parent.querySelectorAll('.option');
+      for (var j = 0; j < parentOpts.length; j++) parentOpts[j].classList.remove('selected');
+      this.classList.add('selected');
+      formData[this.dataset.field] = this.dataset.value;
+      validateStep();
+    });
+  }
+
+  ['name', 'phone', 'email'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.addEventListener('input', validateStep);
+  });
+
+  function formNext() {
+    if (currentStep < totalSteps) {
+      currentStep++;
+      updateFormStep();
+    }
+  }
+
+  function formBackBtn() {
+    if (currentStep > 1) {
+      currentStep--;
+      updateFormStep();
+    } else {
+      goScreen('calc');
+    }
+  }
+
+  // ═══════════════════════════════════════════════════════════
+  // SUBMIT FORM — Dërgon tek Google Sheets
+  // ═══════════════════════════════════════════════════════════
+  function submitForm() {
+    var btn = document.getElementById('submitBtn');
+    var errorEl = document.getElementById('errorMsg');
+    errorEl.classList.remove('show');
+
+    // Show loading
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner"></span>DUKE DERGUAR...';
+
+    // Prepare data
+    formData.name = document.getElementById('name').value.trim();
+    formData.phone = document.getElementById('phone').value.trim();
+    formData.email = document.getElementById('email').value.trim();
+    formData.calculatedLoss = '€' + lossValue.textContent;
+    formData.yearlyLoss = '€' + yearlyVal.textContent;
+    formData.industry = industryName;
+    formData.source = 'lead-generator-v1';
+
+    // Send to Google Sheets
+    fetch(GOOGLE_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors', // E rëndësishme për Google Apps Script
+      headers: {
+        'Content-Type': 'text/plain;charset=utf-8'
+      },
+      body: JSON.stringify(formData)
+    })
+    .then(function() {
+      // Me 'no-cors' nuk mund të lexojmë response, por sheet-i merr të dhënat
+      document.getElementById('successName').textContent = (formData.name.split(' ')[0]) || 'mik';
+      document.getElementById('successLoss').textContent = formData.calculatedLoss;
+      goScreen('success');
+    })
+    .catch(function(error) {
+      console.error('Gabim:', error);
+      errorEl.classList.add('show');
+      btn.disabled = false;
+      btn.innerHTML = 'PROVO PERSERI →';
+    });
+  }
+</script>
+
+</body>
+</html>
